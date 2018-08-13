@@ -1,0 +1,33 @@
+.weatherDataCont{
+    background: blue;
+    text-align: center;
+    width: 600px;
+    height: 100px;
+    line-height: 100px;
+
+}
+.weatherExtraInfoCont{
+    background: yellow;
+    width: 60%;
+    display: inline-block;
+}
+
+.temperature{
+    font-size: 40px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+.temperatureType{
+    font-size: 40px;
+    font-weight: bold;
+    padding-left: 20px;
+    color: aliceblue;
+
+
+}
+
+.weatherTempCont{
+    background: red;
+    width: 40%;
+    display: inline-block
+}

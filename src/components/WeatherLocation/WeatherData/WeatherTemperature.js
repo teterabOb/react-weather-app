@@ -2,6 +2,7 @@ import React from 'react';
 import WeatherIcons from 'react-weathericons';
 import { SNOW } from './../../../constants/weathers';
 import PropTypes from 'prop-types'
+import './styles.css';
 
 
 const stateIconName = weatherState => {
@@ -23,13 +24,14 @@ const stateIconName = weatherState => {
     }
 }
 const weatherIconState = weatherState => { //Si la arrow function tiene solo un parametro se puede dejar sin parentesis
-    return (<WeatherIcons name={stateIconName(weatherState)} size="2x" />)
+    return (<WeatherIcons  className="wIcon" name={stateIconName(weatherState)} size="3x" />)
 }
 
 const WeatherTemperature = ({ temperature, weatherState }) => (
-    <div>
+    <div className="weatherTempCont">
         {weatherIconState(weatherState)}
-        <span> {`${temperature}`}</span>
+        <span className="temperature"> {`${temperature} `}</span>
+        <span className="temperatureType">ºC</span>
 
     </div>
 );
