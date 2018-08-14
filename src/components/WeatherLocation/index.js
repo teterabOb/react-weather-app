@@ -3,12 +3,6 @@ import Location from './Location'
 import WeatherData from './WeatherData/index'
 import { SNOW } from './../../constants/weathers'
 
-const data1 = {
-    temperature: 20,
-    weatherState: SNOW,
-    humidity: 80,
-    wind: '10 m/s'
-}
 
 const location = "London"
 const api_key = "0a73711b0e226e5ae343f3bb397e6b24"; //http://api.apixu.com/v1/current.json?key=f99bf1b937bc45888c235351181408&q=Paris
@@ -22,7 +16,7 @@ class WeatherLocation extends Component {
         super();
         this.state = {
             city: "Santiago",
-            data: data1
+            data: null
         }
     }
 
@@ -44,6 +38,11 @@ class WeatherLocation extends Component {
         return data;
     }
 
+    componentWillMount = () => {
+      this.handleUpdateClick()
+    }
+    
+
     handleUpdateClick = () => {
         fetch(url_api_weather)
             .then((response) => {
@@ -60,8 +59,8 @@ class WeatherLocation extends Component {
         const { city, data } = this.state;
         return (<div>
             <Location city={ city } />
-            <WeatherData data={ data } />
-            <button onClick={this.handleUpdateClick}>Actualizar</button>
+            { data ? <WeatherData data={ data } /> : 'Cargando...' }
+            
         </div>);
     };
 }
