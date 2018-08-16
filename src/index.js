@@ -4,7 +4,7 @@ import './index.css';
 
 
 import registerServiceWorker from './registerServiceWorker';
-import WeatherLocation from './components/WeatherLocation';
+import LocationList from './components/LocationList/LocationList';
 
-ReactDOM.render(<WeatherLocation />, document.getElementById('root'));
+ReactDOM.render(<LocationList />, document.getElementById('root'));
 registerServiceWorker();

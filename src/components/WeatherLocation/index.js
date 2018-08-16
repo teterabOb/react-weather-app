@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import Location from './Location'
 import WeatherData from './WeatherData/index'
 import { SNOW } from './../../constants/weathers'
+import PropTypes from 'prop-types'
 
-
-const location = "London"
-const api_key = "0a73711b0e226e5ae343f3bb397e6b24"; //http://api.apixu.com/v1/current.json?key=f99bf1b937bc45888c235351181408&q=Paris
-
-const url_api_weather = `https://samples.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}`;
-
+const api_key = "0a73711b0e226e5ae343f3bb397e6b24"; 
+const url = "https://samples.openweathermap.org/data/2.5/weather?q=";
 
 class WeatherLocation extends Component {
 
-    constructor(){
+    constructor({ city }){
         super();
         this.state = {
-            city: "Santiago",
+            city,
             data: null
         }
     }
@@ -39,30 +36,33 @@ class WeatherLocation extends Component {
     }
 
     componentWillMount = () => {
-      this.handleUpdateClick()
-    }
-    
+        const { city } = this.state;
+        const url_api_weather = `${url}${city}&appid=${api_key}`;
 
-    handleUpdateClick = () => {
+        console.log(url_api_weather)
+
         fetch(url_api_weather)
-            .then((response) => {
-                return response.json()
-            })
-            .then(obj => {
-                const data =  this.getData(obj);
-                this.setState({ data })
-                console.log(data)
-            });
-    };
+        .then((response) => {
+            return response.json()
+        })
+        .then(obj => {
+            const data =  this.getData(obj);
+            this.setState({ data })
+        });
+    }
    
     render = () => {
         const { city, data } = this.state;
+        console.log(city,data)
         return (<div>
             <Location city={ city } />
-            { data ? <WeatherData data={ data } /> : 'Cargando...' }
-            
+            { data ? <WeatherData data={ data } /> : 'Cargando...' }  
         </div>);
     };
+}
+
+WeatherLocation.propTypes = {
+    city : PropTypes.string,
 }
 
 export default WeatherLocation;
