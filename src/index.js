@@ -6,5 +6,13 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import LocationList from './components/LocationList/LocationList';
 
-ReactDOM.render(<LocationList />, document.getElementById('root'));
+const cities = [
+    'Buenos Aires,ar',
+    'Santiago,cl',
+    'Bogotá,col',
+    'Washington,us',
+    'Madrid,es'
+  ];
+
+ReactDOM.render(<LocationList cities={cities}/>, document.getElementById('root'));
 registerServiceWorker();

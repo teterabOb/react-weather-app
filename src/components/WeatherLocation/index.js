@@ -39,8 +39,6 @@ class WeatherLocation extends Component {
         const { city } = this.state;
         const url_api_weather = `${url}${city}&appid=${api_key}`;
 
-        console.log(url_api_weather)
-
         fetch(url_api_weather)
         .then((response) => {
             return response.json()
@@ -53,7 +51,6 @@ class WeatherLocation extends Component {
    
     render = () => {
         const { city, data } = this.state;
-        console.log(city,data)
         return (<div>
             <Location city={ city } />
             { data ? <WeatherData data={ data } /> : 'Cargando...' }  

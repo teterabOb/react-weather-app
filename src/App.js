@@ -3,13 +3,13 @@ import './App.css';
 import LocationList from './components/LocationList/LocationList';
 
 class App extends Component {
-  render() {
+  render = () => {
     return (
       <div className="App">
-        <LocationList />
+        <LocationList cities={cities}></LocationList>
       </div>
     );
-  }
+  };
 }
 
 export default App;
